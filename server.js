@@ -1,4 +1,3 @@
-const { relativeTimeRounding } = require('moment')
 const cron = require('node-cron')
 const scrap = require('./scrap')
 const { getBookedDateList, setCache, enableService, getFilteredBookedList } = require('./utils')
@@ -17,6 +16,8 @@ const discardOldBookings = async () => {
 }
 
 if (enableService) {
+  console.log(`Scrapping initiated at ${new Date()}`)
+
   /* Cron set for every 1 hour to start the process */
   cron.schedule('0 * * * *', () => {
     console.log(`Scraping initiated at ${new Date()}`)
