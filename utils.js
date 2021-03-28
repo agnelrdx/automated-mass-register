@@ -4,7 +4,7 @@ const moment = require('moment-timezone')
 const redis = require('redis')
 
 const redisClient = redis.createClient({
-  host: process.env.REDIS_HOST,
+  host: 'redis', // host assigned by docker-compose
   port: process.env.REDIS_PORT,
   no_ready_check: true,
   detect_buffers: true

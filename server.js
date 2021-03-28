@@ -17,7 +17,7 @@ const discardOldBookings = async () => {
 
 if (enableService) {
   console.log(`Scrapping initiated at ${new Date()}`)
-
+  
   /* Cron set for every 1 hour to start the process */
   cron.schedule('0 * * * *', () => {
     console.log(`Scraping initiated at ${new Date()}`)

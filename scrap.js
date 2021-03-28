@@ -59,8 +59,13 @@ const findMatchingDom = async (page) => {
 }
 
 module.exports = async () => {
-  const browser = await puppeteer.launch({ headless: true })
+  let browser
   try {
+    browser = await puppeteer.launch({
+      headless: true,
+      executablePath: '/usr/bin/chromium-browser', // Remove this if not using docker-compose
+      args: ['--no-sandbox', '--disable-gpu']
+    })
     const page = await browser.newPage()
     await page.goto('https://access.saintmarysdubai.org', { waitUntil: 'networkidle2' })
     await page.waitForTimeout(2000)
@@ -74,5 +79,5 @@ module.exports = async () => {
   } catch (error) {
     console.log(`Error occurred while registering. Date: ${new Date()} Error: ${error}`)
   }
-  await browser.close()
+  if (browser) await browser.close()
 }
