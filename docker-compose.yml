@@ -6,8 +6,6 @@ services:
     container_name: redisCache
     ports:
       - "6379"
-    networks:
-      - backend
   scrap:
     build: ./
     image: agnelrdx/scrap
@@ -17,8 +15,3 @@ services:
     links: 
         - redis
     command: 'npm start'
-    networks:
-      - backend
-
-networks:
-  backend:
