@@ -13,5 +13,5 @@ services:
     depends_on:
       - redis
     links: 
-        - redis
+      - redis
     command: 'npm start'
