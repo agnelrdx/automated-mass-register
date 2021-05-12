@@ -4,8 +4,7 @@ on:
     branches: [ master ]
 
 jobs:
-  merge-PR:
-    if: github.event.pull_request.merged == true
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
