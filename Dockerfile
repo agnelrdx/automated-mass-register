@@ -1,4 +1,4 @@
-FROM node:14.16.0-alpine3.13
+FROM node:lts-alpine
 
 RUN apk update && apk add --no-cache nmap && \
     echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
