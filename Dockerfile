@@ -1,5 +1,6 @@
 FROM node:lts-alpine
 
+RUN apk add dumb-init
 RUN apk update && apk add --no-cache nmap && \
     echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
     echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
@@ -8,9 +9,10 @@ RUN apk update && apk add --no-cache nmap && \
       chromium
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV NODE_ENV production
 
 WORKDIR /usr/src/app
 
 COPY ./package.json .
-RUN npm install
+CMD ["dumb-init", "npm", "install"]
 COPY ./ ./
