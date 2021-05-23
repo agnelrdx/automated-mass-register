@@ -14,5 +14,5 @@ ENV NODE_ENV production
 WORKDIR /usr/src/app
 
 COPY ./package.json .
-CMD ["dumb-init", "npm", "install"]
+RUN npm install
 COPY ./ ./
